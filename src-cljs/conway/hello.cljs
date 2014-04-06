@@ -14,7 +14,7 @@
     0))
 
 (defn set-cell-value [x y value]
-  (let [color (if (= 0 value) "white" "blue")]
+  (let [color (if (= 0 value) "gray" "blue")]
     (set! (.-bgColor (cell x y)) color)))
 
 (defn num-alive [nbs]
