@@ -18,16 +18,6 @@
 ;     (set! (.-bgColor (cell x y)) color)))
 
 
-; for speed, maybe just make an array of first 100 or so primes
-; and check against that. 
-; also, would make more sense as spiral sieve thing.
-; also, should seed with only primes (or variation of).
-
-
-(defn prime [n]
-   (= 2 (reduce +
-                (for [i (range 1 (inc n))]
-                  (if (= 0 (mod n i)) 1 0)))))
 
 (defn set-cell-value [x y value]
   (let [color (cond (and (< 0 value) (= (.-bgColor (cell x y)) "cyan"))
@@ -40,17 +30,6 @@
                         "gray"
                       )]
     (set! (.-bgColor (cell x y)) color)))
-
-
-; (cond (<= x 10)
-;         "x is a small number"
-;       (<= 11 x 100)
-;         "x is a medium-sized number"
-;       (<= 101 x 1000)
-;         "x is a big number"
-;       :else
-;         "x is a REALLY big number")
-
 
 (defn num-alive [nbs]
   (reduce + 0 nbs))
