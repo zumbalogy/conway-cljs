@@ -21089,14 +21089,21 @@ conway.hello.table_size = function table_size() {
   return document.getElementsByTagName("tr").length
 };
 conway.hello.get_cell_value = function get_cell_value(x, y) {
-  if(cljs.core._EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "blue")) {
+  if(cljs.core._EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "cyan")) {
     return 1
   }else {
     return 0
   }
 };
 conway.hello.set_cell_value = function set_cell_value(x, y, value) {
-  var color = cljs.core._EQ_.call(null, 0, value) ? "gray" : "blue";
+  var color = function() {
+    var and__3822__auto__ = cljs.core._EQ_.call(null, 0, cljs.core.mod.call(null, x, y));
+    if(and__3822__auto__) {
+      return 0 < value
+    }else {
+      return and__3822__auto__
+    }
+  }() ? "yellow" : 0 < value ? "cyan" : "\ufdd0'else" ? "gray" : null;
   return conway.hello.cell.call(null, x, y).bgColor = color
 };
 conway.hello.num_alive = function num_alive(nbs) {
@@ -21261,6 +21268,6 @@ conway.hello.pb = function pb(board) {
 };
 conway.hello.setup = function setup() {
   conway.hello.apply_state.call(null, conway.hello.random_board.call(null, conway.hello.table_size.call(null)));
-  return window.setInterval("conway.hello.tick()", 500)
+  return window.setInterval("conway.hello.tick()", 300)
 };
 window.onload = conway.hello.setup;

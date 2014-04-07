@@ -9,13 +9,34 @@
   (.-length (.getElementsByTagName js/document "tr")))
 
 (defn get-cell-value [x y]
-  (if (= (.-bgColor (cell x y)) "blue")
+  (if (= (.-bgColor (cell x y)) "cyan")
     1
     0))
 
+; (defn set-cell-value [x y value]
+;   (let [color (if (= 0 value) "gray" "cyan")]
+;     (set! (.-bgColor (cell x y)) color)))
+
 (defn set-cell-value [x y value]
-  (let [color (if (= 0 value) "gray" "blue")]
+  (let [color (cond (and (= 0 (mod x y)) (< 0 value))
+                        "yellow"
+                    (< 0 value)
+                        "cyan"
+                    :else
+                        "gray"
+                      )]
     (set! (.-bgColor (cell x y)) color)))
+
+
+; (cond (<= x 10)
+;         "x is a small number"
+;       (<= 11 x 100)
+;         "x is a medium-sized number"
+;       (<= 101 x 1000)
+;         "x is a big number"
+;       :else
+;         "x is a REALLY big number")
+
 
 (defn num-alive [nbs]
   (reduce + 0 nbs))
@@ -74,7 +95,7 @@
 
 (defn setup []
   (apply-state (random-board (table-size)))
-  (.setInterval js/window "conway.hello.tick()" 500))
+  (.setInterval js/window "conway.hello.tick()" 300))
 
 ;; Run this function when the window has loaded
 (set! (.-onload js/window) setup)
