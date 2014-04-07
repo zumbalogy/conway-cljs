@@ -1,3 +1,6 @@
+forked from https://github.com/stackbuilders/conway-cljs
+
+
 # Conway's game of life in clojurescript
 
 ## Running the App
