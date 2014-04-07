@@ -88,7 +88,7 @@
 
 (defn setup []
   (apply-state (random-board (table-size)))
-  (.setInterval js/window "conway.hello.tick()" 300))
+  (.setInterval js/window "conway.hello.tick()" 400))
 
 ;; Run this function when the window has loaded
 (set! (.-onload js/window) setup)

@@ -36,4 +36,4 @@
      (include-js "/js/main.js")]
     [:body
       [:h1 "Conway's Game of Life"]
-     (square-board 40)]))
+     (square-board 70)]))

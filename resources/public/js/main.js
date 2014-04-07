@@ -21095,25 +21095,6 @@ conway.hello.get_cell_value = function get_cell_value(x, y) {
     return 1
   }
 };
-conway.hello.prime = function prime(n) {
-  return cljs.core._EQ_.call(null, 2, cljs.core.reduce.call(null, cljs.core._PLUS_, function() {
-    var iter__2542__auto__ = function iter__2857(s__2858) {
-      return new cljs.core.LazySeq(null, false, function() {
-        var s__2858__$1 = s__2858;
-        while(true) {
-          if(cljs.core.seq.call(null, s__2858__$1)) {
-            var i = cljs.core.first.call(null, s__2858__$1);
-            return cljs.core.cons.call(null, cljs.core._EQ_.call(null, 0, cljs.core.mod.call(null, n, i)) ? 1 : 0, iter__2857.call(null, cljs.core.rest.call(null, s__2858__$1)))
-          }else {
-            return null
-          }
-          break
-        }
-      }, null)
-    };
-    return iter__2542__auto__.call(null, cljs.core.range.call(null, 1, n + 1))
-  }()))
-};
 conway.hello.set_cell_value = function set_cell_value(x, y, value) {
   var color = function() {
     var and__3822__auto__ = 0 < value;
@@ -21136,14 +21117,14 @@ conway.hello.num_alive = function num_alive(nbs) {
   return cljs.core.reduce.call(null, cljs.core._PLUS_, 0, nbs)
 };
 conway.hello.valid_coords = function valid_coords(board, x, y) {
-  return cljs.core.filter.call(null, function(p1__2859_SHARP_) {
-    var and__3822__auto__ = cljs.core.first.call(null, p1__2859_SHARP_) >= 0;
+  return cljs.core.filter.call(null, function(p1__2855_SHARP_) {
+    var and__3822__auto__ = cljs.core.first.call(null, p1__2855_SHARP_) >= 0;
     if(and__3822__auto__) {
-      var and__3822__auto____$1 = cljs.core.last.call(null, p1__2859_SHARP_) >= 0;
+      var and__3822__auto____$1 = cljs.core.last.call(null, p1__2855_SHARP_) >= 0;
       if(and__3822__auto____$1) {
-        var and__3822__auto____$2 = cljs.core.count.call(null, board) - 1 >= cljs.core.first.call(null, p1__2859_SHARP_);
+        var and__3822__auto____$2 = cljs.core.count.call(null, board) - 1 >= cljs.core.first.call(null, p1__2855_SHARP_);
         if(and__3822__auto____$2) {
-          return cljs.core.count.call(null, board) - 1 >= cljs.core.last.call(null, p1__2859_SHARP_)
+          return cljs.core.count.call(null, board) - 1 >= cljs.core.last.call(null, p1__2855_SHARP_)
         }else {
           return and__3822__auto____$2
         }
@@ -21153,29 +21134,29 @@ conway.hello.valid_coords = function valid_coords(board, x, y) {
     }else {
       return and__3822__auto__
     }
-  }, cljs.core.map.call(null, function(p1__2860_SHARP_) {
-    return cljs.core.vector.call(null, cljs.core.first.call(null, p1__2860_SHARP_) + x, cljs.core.last.call(null, p1__2860_SHARP_) + y)
+  }, cljs.core.map.call(null, function(p1__2856_SHARP_) {
+    return cljs.core.vector.call(null, cljs.core.first.call(null, p1__2856_SHARP_) + x, cljs.core.last.call(null, p1__2856_SHARP_) + y)
   }, cljs.core.PersistentVector.fromArray([cljs.core.PersistentVector.fromArray([-1, -1], true), cljs.core.PersistentVector.fromArray([-1, 1], true), cljs.core.PersistentVector.fromArray([1, -1], true), cljs.core.PersistentVector.fromArray([1, 1], true), cljs.core.PersistentVector.fromArray([0, 1], true), cljs.core.PersistentVector.fromArray([1, 0], true), cljs.core.PersistentVector.fromArray([-1, 0], true), cljs.core.PersistentVector.fromArray([0, -1], true)], true)))
 };
 conway.hello.apply_state = function apply_state(state) {
-  var G__2864 = cljs.core.seq.call(null, cljs.core.range.call(null, 0, cljs.core.count.call(null, state)));
+  var G__2860 = cljs.core.seq.call(null, cljs.core.range.call(null, 0, cljs.core.count.call(null, state)));
   while(true) {
-    if(G__2864) {
-      var x = cljs.core.first.call(null, G__2864);
-      var G__2865_2866 = cljs.core.seq.call(null, cljs.core.range.call(null, 0, cljs.core.count.call(null, state)));
+    if(G__2860) {
+      var x = cljs.core.first.call(null, G__2860);
+      var G__2861_2862 = cljs.core.seq.call(null, cljs.core.range.call(null, 0, cljs.core.count.call(null, state)));
       while(true) {
-        if(G__2865_2866) {
-          var y_2867 = cljs.core.first.call(null, G__2865_2866);
-          conway.hello.set_cell_value.call(null, x, y_2867, cljs.core.get_in.call(null, state, cljs.core.PersistentVector.fromArray([x, y_2867], true)));
-          var G__2868 = cljs.core.next.call(null, G__2865_2866);
-          G__2865_2866 = G__2868;
+        if(G__2861_2862) {
+          var y_2863 = cljs.core.first.call(null, G__2861_2862);
+          conway.hello.set_cell_value.call(null, x, y_2863, cljs.core.get_in.call(null, state, cljs.core.PersistentVector.fromArray([x, y_2863], true)));
+          var G__2864 = cljs.core.next.call(null, G__2861_2862);
+          G__2861_2862 = G__2864;
           continue
         }else {
         }
         break
       }
-      var G__2869 = cljs.core.next.call(null, G__2864);
-      G__2864 = G__2869;
+      var G__2865 = cljs.core.next.call(null, G__2860);
+      G__2860 = G__2865;
       continue
     }else {
       return null
@@ -21184,28 +21165,28 @@ conway.hello.apply_state = function apply_state(state) {
   }
 };
 conway.hello.nabes = function nabes(state, x, y) {
-  return cljs.core.map.call(null, function(p1__2861_SHARP_) {
-    return cljs.core.get_in.call(null, state, cljs.core.PersistentVector.fromArray([cljs.core.first.call(null, p1__2861_SHARP_), cljs.core.last.call(null, p1__2861_SHARP_)], true))
+  return cljs.core.map.call(null, function(p1__2857_SHARP_) {
+    return cljs.core.get_in.call(null, state, cljs.core.PersistentVector.fromArray([cljs.core.first.call(null, p1__2857_SHARP_), cljs.core.last.call(null, p1__2857_SHARP_)], true))
   }, conway.hello.valid_coords.call(null, state, x, y))
 };
 conway.hello.initialize_board = function initialize_board(n, f) {
   return cljs.core.vec.call(null, function() {
-    var iter__2542__auto__ = function iter__2876(s__2877) {
+    var iter__2542__auto__ = function iter__2872(s__2873) {
       return new cljs.core.LazySeq(null, false, function() {
-        var s__2877__$1 = s__2877;
+        var s__2873__$1 = s__2873;
         while(true) {
-          if(cljs.core.seq.call(null, s__2877__$1)) {
-            var x = cljs.core.first.call(null, s__2877__$1);
+          if(cljs.core.seq.call(null, s__2873__$1)) {
+            var x = cljs.core.first.call(null, s__2873__$1);
             return cljs.core.cons.call(null, cljs.core.vec.call(null, function() {
               var iter__2542__auto__ = function(x) {
-                return function iter__2880(s__2881) {
+                return function iter__2876(s__2877) {
                   return new cljs.core.LazySeq(null, false, function(x) {
                     return function() {
-                      var s__2881__$1 = s__2881;
+                      var s__2877__$1 = s__2877;
                       while(true) {
-                        if(cljs.core.seq.call(null, s__2881__$1)) {
-                          var y = cljs.core.first.call(null, s__2881__$1);
-                          return cljs.core.cons.call(null, f.call(null, x, y), iter__2880.call(null, cljs.core.rest.call(null, s__2881__$1)))
+                        if(cljs.core.seq.call(null, s__2877__$1)) {
+                          var y = cljs.core.first.call(null, s__2877__$1);
+                          return cljs.core.cons.call(null, f.call(null, x, y), iter__2876.call(null, cljs.core.rest.call(null, s__2877__$1)))
                         }else {
                           return null
                         }
@@ -21216,7 +21197,7 @@ conway.hello.initialize_board = function initialize_board(n, f) {
                 }
               }(x);
               return iter__2542__auto__.call(null, cljs.core.range.call(null, 0, n))
-            }()), iter__2876.call(null, cljs.core.rest.call(null, s__2877__$1)))
+            }()), iter__2872.call(null, cljs.core.rest.call(null, s__2873__$1)))
           }else {
             return null
           }
@@ -21278,13 +21259,13 @@ conway.hello.tick = function tick() {
   return conway.hello.apply_state.call(null, conway.hello.next_tick.call(null, conway.hello.current_board.call(null)))
 };
 conway.hello.pb = function pb(board) {
-  var G__2883 = cljs.core.seq.call(null, board);
+  var G__2879 = cljs.core.seq.call(null, board);
   while(true) {
-    if(G__2883) {
-      var row = cljs.core.first.call(null, G__2883);
+    if(G__2879) {
+      var row = cljs.core.first.call(null, G__2879);
       cljs.core.prn.call(null, row);
-      var G__2884 = cljs.core.next.call(null, G__2883);
-      G__2883 = G__2884;
+      var G__2880 = cljs.core.next.call(null, G__2879);
+      G__2879 = G__2880;
       continue
     }else {
       return null
@@ -21294,6 +21275,6 @@ conway.hello.pb = function pb(board) {
 };
 conway.hello.setup = function setup() {
   conway.hello.apply_state.call(null, conway.hello.random_board.call(null, conway.hello.table_size.call(null)));
-  return window.setInterval("conway.hello.tick()", 300)
+  return window.setInterval("conway.hello.tick()", 400)
 };
 window.onload = conway.hello.setup;
