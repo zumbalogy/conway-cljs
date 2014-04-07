@@ -21115,17 +21115,17 @@ conway.hello.prime = function prime(n) {
   }()))
 };
 conway.hello.set_cell_value = function set_cell_value(x, y, value) {
-  var color = cljs.core.truth_(function() {
+  var color = function() {
     var and__3822__auto__ = 0 < value;
     if(and__3822__auto__) {
-      return conway.hello.prime.call(null, x + y * 40)
+      return cljs.core._EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "cyan")
     }else {
       return and__3822__auto__
     }
-  }()) ? "white" : function() {
+  }() ? "white" : function() {
     var and__3822__auto__ = 0 < value;
     if(and__3822__auto__) {
-      return cljs.core._EQ_.call(null, conway.hello.get_cell_value.call(null, x, y), 0)
+      return cljs.core._EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "lightblue")
     }else {
       return and__3822__auto__
     }

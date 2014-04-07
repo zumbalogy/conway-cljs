@@ -35,5 +35,5 @@
      [:title "Conway's Game of Life"]
      (include-js "/js/main.js")]
     [:body
-      [:h1 "Conway's Game of Life and Primes"]
+      [:h1 "Conway's Game of Life"]
      (square-board 40)]))

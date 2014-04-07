@@ -30,9 +30,9 @@
                   (if (= 0 (mod n i)) 1 0)))))
 
 (defn set-cell-value [x y value]
-  (let [color (cond (and (< 0 value) (prime (+ x (* y 40))))
+  (let [color (cond (and (< 0 value) (= (.-bgColor (cell x y)) "cyan"))
                         "white"
-                    (and (< 0 value) (= (get-cell-value x y) 0))
+                    (and (< 0 value) (= (.-bgColor (cell x y)) "lightblue"))
                         "cyan"
                     (< 0 value)
                         "lightblue"
