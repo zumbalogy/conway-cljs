@@ -21089,10 +21089,10 @@ conway.hello.table_size = function table_size() {
   return document.getElementsByTagName("tr").length
 };
 conway.hello.get_cell_value = function get_cell_value(x, y) {
-  if(cljs.core.not_EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "gray")) {
-    return 1
-  }else {
+  if(cljs.core._EQ_.call(null, conway.hello.cell.call(null, x, y).bgColor, "gray")) {
     return 0
+  }else {
+    return 1
   }
 };
 conway.hello.prime = function prime(n) {
@@ -21122,7 +21122,14 @@ conway.hello.set_cell_value = function set_cell_value(x, y, value) {
     }else {
       return and__3822__auto__
     }
-  }()) ? "white" : 0 < value ? "cyan" : "\ufdd0'else" ? "gray" : null;
+  }()) ? "white" : function() {
+    var and__3822__auto__ = 0 < value;
+    if(and__3822__auto__) {
+      return cljs.core._EQ_.call(null, conway.hello.get_cell_value.call(null, x, y), 0)
+    }else {
+      return and__3822__auto__
+    }
+  }() ? "cyan" : 0 < value ? "lightblue" : "\ufdd0'else" ? "gray" : null;
   return conway.hello.cell.call(null, x, y).bgColor = color
 };
 conway.hello.num_alive = function num_alive(nbs) {

@@ -9,9 +9,9 @@
   (.-length (.getElementsByTagName js/document "tr")))
 
 (defn get-cell-value [x y]
-  (if (not= (.-bgColor (cell x y)) "gray")
-    1
-    0))
+  (if (= (.-bgColor (cell x y)) "gray")
+    0
+    1))
 
 ; (defn set-cell-value [x y value]
 ;   (let [color (if (= 0 value) "gray" "cyan")]
@@ -32,8 +32,10 @@
 (defn set-cell-value [x y value]
   (let [color (cond (and (< 0 value) (prime (+ x (* y 40))))
                         "white"
-                    (< 0 value)
+                    (and (< 0 value) (= (get-cell-value x y) 0))
                         "cyan"
+                    (< 0 value)
+                        "lightblue"
                     :else
                         "gray"
                       )]
