@@ -1,0 +1,6 @@
+:use clojure.contrib.math
+sqrt 44
+(:require [some.namespace :as sn])
+(defn is_prime [input] (== (for [x (range 1 (/ input 2)) :when (== (mod input x) 0)] x) 1 ) )
+is_prime 5
+is_prime 6
